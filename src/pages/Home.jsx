@@ -6,8 +6,6 @@ export const Home = () => {
 
 	const { store, dispatch } = useGlobalReducer();
 
-	const { contacts, setContacts } = useState([]);
-
 	useEffect(() => {
 
 		const loadP = async () => {
@@ -16,21 +14,26 @@ export const Home = () => {
 				method: 'GET'
 			});
 			const repJson = await resp.json();
-			setContacts(respJson)
+			dispatch({
+				type: 'load_contacts',
+				payload: {
+					contacts: repJson
+				}
+			})
 		}
 
 		loadContacts();
 
 	}, [])
 
-	console.log(contacts);
+
 
 	return (
 		<div className="text-center mt-5">
 			<h1>Contactos</h1>
-			<div className="d-flex justify-content-center">
+			<div className="d-flex flex-column justify-content-center">
 				{
-					contacts.map((contact) => {
+					store.contacts.map((contact) => {
 						<Card key={contact._id} name={contact.name} number={contact.phone} photo={contact.photo} Address={contact.Address} Email={contact.Email} onEdit={() => { }} onDelete={() => { }} />
 					})
 				}

@@ -1,5 +1,9 @@
+import { useState } from "react"
 
-export const FormContact = ({title}) => {
+export const FormContact = ({ title, onSubmit }) => {
+    const {name, satName} = useState('');
+    const { photo, setPhoto} = useState('');
+    const {team, setTeam} = useState ('');
 
     return (
         <div>
@@ -8,34 +12,49 @@ export const FormContact = ({title}) => {
                     <legend>{title}</legend>
                     <div className="mb-3">
                         <label for="name" className="form-label">Full name</label>
-                        <input type="text" id="name" className="form-control" placeholder="Full name" />
+                        <input value={name} type="text" id="name" className="form-control" placeholder="Full name" onChange={() => setName(EventTarget.target.value)}/>
                     </div>
-                     <div className="mb-3">
+                    <div className="mb-3">
                         <label for="photo" className="form-label">Url photo</label>
-                        <input type="text" id="photo" className="form-control" placeholder="photo" />
+                        <input value={photo} type="text" id="photo" className="form-control" placeholder="photo" onChange={() => setPhoto(EventTarget.target.value)}/>
                     </div>
                     <div className="mb-3">
                         <label for="Email" className="form-label">Email</label>
-                        <input type="text" id="Email" className="form-control" placeholder="Email" />
+                        <input value={Email} type="text" id="Email" className="form-control" placeholder="Email" onChange={() => setEmail(EventTarget.target.value)} />
                     </div>
                     <div className="mb-3">
                     </div>
                     <div className="mb-3">
                         <label for="phone" className="form-label">Phone</label>
-                        <input type="text" id="phone" className="form-control" placeholder="Phone" />
+                        <input value={phone} type="text" id="phone" className="form-control" placeholder="Phone" onChange={() => setPhone(EventTarget.target.value)}/>
                     </div>
                     <div className="mb-3">
                         <div className="mb-3">
-                        <label for="Address" className="form-label">Address</label>
-                        <input type="text" id="Address" className="form-control" placeholder="Address" />
-                    </div>
+                            <label for="Address" className="form-label">Address</label>
+                            <input value={Address} type="text" id="Address" className="form-control" placeholder="Address" onChange={() => setAddress(EventTarget.target.value)}/>
+                        </div>
                     </div>
                     <div className="mb-3">
                         <div className="form-check">
                         </div>
                     </div>
-                    <button type="submit" className="btn btn-primary">Submit</button>
-                    <a className="p-3" href="https://cautious-space-chainsaw-975xw7qwq9jrf7wqp-3000.app.github.dev/">Get back to contacts</a>
+                    <button type="submit" className="btn btn-primary" onClick={(evt) => {
+                        evt.preventDefault();
+                        onSubmit({
+                            name,
+                            photo,
+                            email,
+                            address,
+                            phone,
+                        })
+                    }}>Submit</button>
+                    <a className="p-3" href="https://cautious-space-chainsaw-975xw7qwq9jrf7wqp-3000.app.github.dev/" onClick={() => {
+                        setName('')
+                        setPhoto('')
+                        setEmail('')
+                        setPhone('')
+                        setAddress('')
+                    }}>Get back to contacts</a>
                 </fieldset>
             </form>
 

@@ -1,11 +1,22 @@
-export const initialStore=()=>{
-  
+export const initialStore = () => {
+  return (
+    contacts: [],
+  )
 }
 
-export default function storeReducer (store, action = {}) {
-  switch(action.type){
+export default function storeReducer(store, action = {}) {
+  switch (action.type) {
 
-  default:
-    throw Error('Unknown action.');
+    case 'load_contacts': {
+      const { contacts } = action.payload;
+      return {
+        ...store,
+        contacts: contacts,
+      }
+    }
+
+
+    default:
+      throw Error('Unknown action.');
   }
 }
