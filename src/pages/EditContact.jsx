@@ -1,6 +1,6 @@
 import { FormContact } from "../components/FormContact"
 
-export const CreateContact = () => {
+export const EditContact = () => {
 
     const createContacts = (body) => {
         fetch('https://playground.4geeks.com/contact/agendas/Ricks/contacts', {
@@ -15,8 +15,7 @@ export const CreateContact = () => {
     return  (
         <div className="container">
             <h3>Add new contact</h3>
-            <FormContact title={'New Contact'} onSubmit={createContacts} />
+            <FormContact title={'Edit Contact'} onSubmit={() => {}} />
         </div>
     )
 }
-

@@ -1,7 +1,7 @@
 export const initialStore = () => {
-  return (
+  return {
     contacts: [],
-  )
+  }
 }
 
 export default function storeReducer(store, action = {}) {
