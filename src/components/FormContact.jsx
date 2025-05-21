@@ -21,7 +21,7 @@ export const FormContact = ({ title, onSubmit }) => {
                     </div>
                     <div className="mb-3">
                         <label for="Email" className="form-label">Email</label>
-                        <input value={email} type="text" id="Email" className="form-control" placeholder="Email" onChange={() => setEmail(EventTarget.target.value)} />
+                        <input value={email} type="text" id="Email" className="form-control" placeholder="Email" onChange={() => setEmail(EventTarget.target.value)}/>
                     </div>
                     <div className="mb-3">
                     </div>
